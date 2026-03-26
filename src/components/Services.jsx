@@ -131,64 +131,73 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Grid */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((service) => (
+        {/* Grid — numbered editorial cards */}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
+          {services.map((service, i) => (
             <div
               key={service.name}
-              className={`group relative overflow-hidden border transition-all duration-500 cursor-default ${
-                service.featured
-                  ? 'border-gold/40 bg-gradient-to-br from-dark via-dark to-gold/5'
-                  : 'border-white/8 bg-dark hover:border-gold/30'
+              className={`group relative overflow-hidden cursor-default transition-all duration-500 bg-dark hover:bg-[#161616] ${
+                service.featured ? 'ring-1 ring-inset ring-gold/20' : ''
               }`}
             >
               {service.featured && (
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/80 to-transparent" />
               )}
 
-              {/* Hover glow layer */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Large background number */}
+              <span
+                className="absolute bottom-4 right-5 font-black leading-none select-none pointer-events-none transition-colors duration-500"
+                style={{
+                  fontSize: '7rem',
+                  color: service.featured ? 'rgba(201,168,76,0.06)' : 'rgba(255,255,255,0.03)',
+                  lineHeight: 1,
+                }}
+              >
+                {String(i + 1).padStart(2, '0')}
+              </span>
 
-              <div className="relative z-10 p-8 flex flex-col h-full">
-                {/* Top row */}
-                <div className="flex items-start justify-between mb-7">
-                  <div
-                    className={`text-gold/70 group-hover:text-gold transition-colors duration-300 ${
-                      service.featured ? 'text-gold' : ''
-                    }`}
-                  >
-                    {service.icon}
-                  </div>
-                  <div className="text-right">
-                    <span className="text-gold font-black text-2xl leading-none">{service.price}</span>
-                    <p className="text-white/25 text-[10px] tracking-[0.15em] uppercase mt-1">
-                      {service.duration}
-                    </p>
+              {/* Hover glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gold/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="relative z-10 p-8 md:p-9 flex flex-col h-full min-h-[260px]">
+                {/* Index + price row */}
+                <div className="flex items-center justify-between mb-8">
+                  <span className="text-white/20 text-[10px] tracking-[0.4em] font-semibold uppercase">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-gold font-black text-xl leading-none">{service.price}</span>
+                    <span className="text-white/20 text-[10px] tracking-widest uppercase">{service.duration}</span>
                   </div>
                 </div>
 
+                {/* Icon */}
+                <div className={`mb-4 transition-colors duration-300 ${service.featured ? 'text-gold' : 'text-white/35 group-hover:text-gold/70'}`}>
+                  {service.icon}
+                </div>
+
                 {/* Name */}
-                <h3 className="text-white font-bold text-xl mb-3 group-hover:text-gold transition-colors duration-300 leading-snug">
+                <h3 className="text-white font-bold text-xl mb-3 leading-snug group-hover:text-gold transition-colors duration-300">
                   {service.name}
                   {service.featured && (
-                    <span className="ml-2 text-[10px] bg-gold text-charcoal px-2 py-0.5 font-black tracking-widest uppercase align-middle">
+                    <span className="ml-2 align-middle text-[9px] bg-gold text-charcoal px-2 py-0.5 font-black tracking-[0.15em] uppercase">
                       Popular
                     </span>
                   )}
                 </h3>
 
                 {/* Description */}
-                <p className="text-white/45 text-sm leading-relaxed flex-1">{service.description}</p>
+                <p className="text-white/40 text-sm leading-relaxed flex-1">{service.description}</p>
 
-                {/* CTA */}
-                <div className="mt-6 pt-5 border-t border-white/5">
+                {/* Bottom CTA */}
+                <div className="mt-7 pt-5 border-t border-white/5 flex items-center justify-between">
                   <a
                     href="#booking"
-                    className="inline-flex items-center gap-2 text-gold text-xs tracking-[0.2em] uppercase font-bold group-hover:gap-3 transition-all duration-300"
+                    className="inline-flex items-center gap-2 text-gold text-[11px] tracking-[0.2em] uppercase font-bold group-hover:gap-3 transition-all duration-300"
                   >
-                    Book This
-                    <span>→</span>
+                    Book →
                   </a>
+                  <span className="text-white/15 text-[10px] tracking-widest uppercase">{service.duration}</span>
                 </div>
               </div>
             </div>
