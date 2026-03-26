@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #c9a84c;
+  --color-gold-light: #e8c96a;
+  --color-charcoal: #0a0a0a;
+  --color-dark: #111111;
+  --color-card: #1a1a1a;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: white;
+  overflow-x: hidden;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  text-align: left;
+  border: none;
+  display: block;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: #c9a84c;
+  color: #0a0a0a;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a84c;
+  border-radius: 2px;
+}
+#announcements, #myApiKey, #block-mainnavigation-2 > div > div > ul > li:nth-child(4) > ul, #btn-copyToClipboard, #block-gavias-tico-local-tasks, #block-resetpasswordlink, #block-createnewaccountlink, #block-gavias-tico-footer > div > ul, #button-wcylfasjbp3s, #formsection, #footer, #block-contactblock, #block-mainnavigation-2 > div > div > ul > li:nth-child(2), #block-mainnavigation-2 > div > div > ul > li:nth-child(5) {
+    display: block !important;
+}
