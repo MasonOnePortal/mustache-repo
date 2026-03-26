@@ -10,6 +10,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
 import Gallery from './components/Gallery'
+import Team from './components/Team'
 import Testimonials from './components/Testimonials'
 import BookingCTA from './components/BookingCTA'
 import Footer from './components/Footer'
@@ -56,6 +57,7 @@ export default function App() {
         <Services />
         <Marquee />
         <Gallery />
+        <Team />
         <Testimonials />
         <BookingCTA />
         <Footer />
